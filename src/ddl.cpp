@@ -60,12 +60,12 @@ namespace bb {
             config_fp = fopen(config_path_.c_str(), "wb");
             fputs((R"("host": "127.0.0.1","user": "root","password": "*","port": "3306","unix_socket": "","client_flag": "0","character":"utf8mb4","read_timeout":"30","write_timeout":"60")"),config_fp);
             fclose(config_fp);
-            cc::safe::Log::obj().error("请配置文件:("+config_path_+")");
+            throw std::runtime_error("请配置文件:("+config_path_+")");
         }else{
             getConfigF_(config_fp);
             fclose(config_fp);
             if(initMysqlF_() != 0){
-                cc::safe::Log::obj().error("initMysqlF失败");
+                throw std::runtime_error("initMysqlF失败");
             }
             MysqlPing_::obj().initF(); //ping,检测连接是否正常
         }
@@ -177,7 +177,7 @@ namespace bb {
         //进行初始化
         for(auto &v:connect_arr_){
             if(v.info["password"] == "*"){
-                cc::safe::Log::obj().error("请配置文件:("+config_path_+")");
+                throw std::runtime_error("请配置文件:("+config_path_+")");
                 return -1;
             }else if(initMysqlF_(v) != 0){
                 return -1;

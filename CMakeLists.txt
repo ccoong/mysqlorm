@@ -1,8 +1,8 @@
 get_filename_component(project_name_ ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 string(TOLOWER ${project_name_} project_name_)
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 set(CMAKE_CXX_STANDARD 20)
-project(${project_name_} VERSION 6.2.1)
+project(${project_name_} VERSION 0.0.1)
 ADD_DEFINITIONS(-D_PROJECT_VERSION=\"${PROJECT_VERSION}\")
 
 #Debug｜Release模式: -g表示带调试信息，-Wall表示输出所有的警告信息
@@ -14,7 +14,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
 aux_source_directory(${CMAKE_SOURCE_DIR}/src SRC_FILE)
 if(CMAKE_SYSTEM_NAME MATCHES "Linux")
-    set(install_dir /usr/local/cc13535)
+    set(install_dir /var/ccoong)
     add_library(${PROJECT_NAME} SHARED ${SRC_FILE})
 else()
     set(install_dir ${CMAKE_SOURCE_DIR}/build)
