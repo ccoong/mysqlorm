@@ -2,8 +2,10 @@
 
 Mysql数据库映射， [ccoong/web_server](https://github.com/ccoong/web_server) 的扩展  
 
-### 依赖mysql-8
-> [mysql-8.3.0-linux-glibc2.28-x86_64](https://www.mysql.com)
+
+### 依赖
+> 1、[ccoong/ccore](https://github.com/ccoong/ccore)  
+> 2、[mysql-8.3.0-linux-glibc2.28-x86_64](https://www.mysql.com)
 
 ### 基本信息配置文件
 ````c++
